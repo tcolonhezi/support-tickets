@@ -1,5 +1,8 @@
 import http from "node:http";
 import { getRoutes } from "../routes/routes";
+import { Database } from "../database/database";
+
+const database = new Database();
 
 export function routeHandler(
   request: http.IncomingMessage,
@@ -10,7 +13,7 @@ export function routeHandler(
   });
 
   if (route) {
-    return route.controller({ request, response });
+    return route.controller({ request, response, database });
   } else {
     return response
       .writeHead(404)

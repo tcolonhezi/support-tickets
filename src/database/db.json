@@ -1,0 +1,13 @@
+{
+  "tickets": [
+    {
+      "id": "6d2cf54a-b517-40c6-a8ff-7fc45b169b72",
+      "equipment": "Computador",
+      "description": "Computador não liga",
+      "user_name": "Thiago",
+      "status": "open",
+      "created_at": "2026-03-03T11:53:43.667Z",
+      "updated_at": "2026-03-03T11:53:43.667Z"
+    }
+  ]
+}
