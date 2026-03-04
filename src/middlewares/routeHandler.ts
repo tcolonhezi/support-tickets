@@ -8,7 +8,8 @@ export function routeHandler(
   request: http.IncomingMessage,
   response: http.ServerResponse,
 ) {
-  const route = getRoutes().find((route) => {
+  const allRoutes = getRoutes().flat();
+  const route = allRoutes.find((route) => {
     return route.method === request.method && route.path === request.url;
   });
 

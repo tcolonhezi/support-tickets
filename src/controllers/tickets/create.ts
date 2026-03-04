@@ -1,13 +1,6 @@
+import { ControllerProps } from "../../types/controller";
 import { Ticket } from "./../../types/ticket";
-import http from "node:http";
 import { randomUUID } from "node:crypto";
-import { Database } from "../../database/database";
-
-export interface ControllerProps {
-  request: http.IncomingMessage;
-  response: http.ServerResponse;
-  database: Database;
-}
 
 export function createTicketController({
   request,
@@ -15,20 +8,24 @@ export function createTicketController({
   database,
 }: ControllerProps) {
   if (!request.body) {
-    return response.writeHead(400).end(
+    response.writeHead(400).end(
       JSON.stringify({
         message: "Corpo da requisição é vazio ou inválido.",
       }),
     );
+    console.error("Request body is empty or invalid.");
+    return;
   }
   const { equipment, description, user_name } = request.body as Ticket;
 
   if (!equipment || !description || !user_name) {
-    return response.writeHead(400).end(
+    response.writeHead(400).end(
       JSON.stringify({
         message: "Campos obrigatórios: equipment, description e user_name",
       }),
     );
+    console.error("Missing required fields: equipment, description, user_name");
+    return;
   }
 
   const ticket: Ticket = {
@@ -42,10 +39,13 @@ export function createTicketController({
   };
   const success = database.insert("tickets", ticket);
   if (!success) {
-    return response
+    response
       .writeHead(500)
       .end(JSON.stringify({ message: "Internal server error" }));
+    return;
   }
   console.log("New ticket created:", ticket);
-  response.end(JSON.stringify({ message: "Ticket created successfully" }));
+  response
+    .writeHead(201)
+    .end(JSON.stringify({ ticket, message: "Ticket created successfully" }));
 }
