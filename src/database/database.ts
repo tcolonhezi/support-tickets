@@ -26,8 +26,26 @@ export class Database {
     fs.writeFile(this.#DATABASE_PATH, JSON.stringify(this.#database, null, 2));
   }
 
-  select(table: string) {
-    return this.#database[table] ?? [];
+  select(table: string, filter?: Partial<any>) {
+    let data = this.#database[table] ?? [];
+    const validFilter =
+      filter &&
+      Object.entries(filter).some(([key, value]) => {
+        return key.trim() !== "" && value !== undefined && value !== null;
+      });
+
+    if (validFilter) {
+      data = data.filter((item) => {
+        return Object.entries(validFilter).some(([key, value]) => {
+          if (!item[key] || !value) return false;
+          const itemValue = String(item[key].toLowerCase());
+          const filterValue = String(value.toLowerCase());
+          return itemValue.includes(filterValue);
+        });
+      });
+    }
+    console.log(data);
+    return data;
   }
 
   insert<T>(table: string, data: T): boolean {

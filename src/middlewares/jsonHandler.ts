@@ -1,11 +1,5 @@
 import http from "node:http";
 
-declare module "node:http" {
-  interface IncomingMessage {
-    body?: Record<string, any> | null;
-  }
-}
-
 export async function jsonHandler(
   request: http.IncomingMessage,
   response: http.ServerResponse,

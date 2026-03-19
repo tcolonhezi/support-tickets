@@ -1,6 +1,7 @@
 import http from "node:http";
-import { getRoutes } from "../routes/routes";
 import { Database } from "../database/database";
+import { routes } from "../routes/index";
+import { extractQuery } from "../routes/util/extractQuery";
 
 const database = new Database();
 
@@ -8,12 +9,20 @@ export function routeHandler(
   request: http.IncomingMessage,
   response: http.ServerResponse,
 ) {
-  const allRoutes = getRoutes().flat();
-  const route = allRoutes.find((route) => {
-    return route.method === request.method && route.path === request.url;
+  const { method, url } = request;
+  console.log(`Received ${method} request for ${url}`);
+
+  const route = routes.find((route) => {
+    console.log(route);
+    return route.method === method && route.path.test(url ?? "");
   });
 
   if (route) {
+    const routeParams = url?.match(route.path);
+    const queryParams = routeParams?.groups?.query;
+
+    request.query = extractQuery(queryParams || "");
+
     return route.controller({ request, response, database });
   } else {
     return response
