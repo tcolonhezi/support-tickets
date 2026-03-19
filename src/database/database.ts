@@ -33,10 +33,10 @@ export class Database {
       Object.entries(filter).some(([key, value]) => {
         return key.trim() !== "" && value !== undefined && value !== null;
       });
-
+    console.log("Applying filter:", filter, "Valid filter:", validFilter);
     if (validFilter) {
       data = data.filter((item) => {
-        return Object.entries(validFilter).some(([key, value]) => {
+        return Object.entries(filter).some(([key, value]) => {
           if (!item[key] || !value) return false;
           const itemValue = String(item[key].toLowerCase());
           const filterValue = String(value.toLowerCase());
@@ -61,5 +61,16 @@ export class Database {
       console.log(error);
       return false;
     }
+  }
+
+  update(table: string, id: string, data: object): any {
+    const tableData = this.#database[table] ?? [];
+    const index = tableData.findIndex((item) => item.id === id);
+    if (index === -1) {
+      return null;
+    }
+    tableData[index] = { ...tableData[index], ...data };
+    this.#persist();
+    return tableData[index];
   }
 }

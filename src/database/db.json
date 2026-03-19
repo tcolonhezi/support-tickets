@@ -2,12 +2,12 @@
   "tickets": [
     {
       "id": "6d2cf54a-b517-40c6-a8ff-7fc45b169b72",
-      "equipment": "Computador",
+      "equipment": "Teclado",
       "description": "Computador não liga",
       "user_name": "Thiago",
       "status": "open",
       "created_at": "2026-03-03T11:53:43.667Z",
-      "updated_at": "2026-03-03T11:53:43.667Z"
+      "updated_at": "2026-03-19T11:54:56.492Z"
     },
     {
       "id": "553563e0-8cff-4776-a46b-a4363c591b62",

@@ -19,9 +19,10 @@ export function routeHandler(
 
   if (route) {
     const routeParams = url?.match(route.path);
-    const queryParams = routeParams?.groups?.query;
+    const { queryParams, ...params } = routeParams?.groups || {};
 
     request.query = extractQuery(queryParams || "");
+    request.params = params;
 
     return route.controller({ request, response, database });
   } else {
