@@ -23,8 +23,8 @@ export function routeHandler(
     request.query = extractQuery(query || "");
     request.params = params;
 
-    console.log("Extracted params:", request.params);
-    console.log("Extracted query params:", request.query);
+    // console.log("Extracted params:", request.params);
+    // console.log("Extracted query params:", request.query);
 
     return route.controller({ request, response, database });
   } else {

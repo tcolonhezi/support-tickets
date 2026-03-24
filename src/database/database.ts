@@ -66,12 +66,22 @@ export class Database {
 
   update(table: string, id: string, data: object): any {
     const index = this.#database[table].findIndex((item) => item.id === id);
-    if (index > 1) {
+    if (index > -1) {
       const currentData = this.#database[table][index];
       this.#database[table][index] = { ...currentData, ...data };
       this.#persist();
       return this.#database[table][index];
     }
     return null;
+  }
+
+  delete(table: string, id: string): boolean {
+    const index = this.#database[table].findIndex((item) => item.id === id);
+    if (index > -1) {
+      this.#database[table].splice(index, 1);
+      this.#persist();
+      return true;
+    }
+    return false;
   }
 }

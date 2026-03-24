@@ -45,26 +45,6 @@
       "created_at": "2026-03-24T09:47:25.280Z",
       "updated_at": "2026-03-24T10:03:40.259Z",
       "solution": "Agora vai!!!"
-    },
-    {
-      "id": "fb4aed0c-8a51-43f4-bdc5-df6d6f4db2ef",
-      "equipment": "Computador5",
-      "description": "Computador não liga",
-      "user_name": "Thiago",
-      "status": "closed",
-      "created_at": "2026-03-24T09:50:12.897Z",
-      "updated_at": "2026-03-24T09:51:54.329Z",
-      "solution": "Troca do computador."
-    },
-    {
-      "id": "db3fcd33-48f8-4e41-b52a-8df18385171b",
-      "equipment": "Computador PDV 2",
-      "description": "Computador não liga",
-      "user_name": "Alberto",
-      "status": "closed",
-      "created_at": "2026-03-24T10:06:29.984Z",
-      "updated_at": "2026-03-24T10:07:10.097Z",
-      "solution": "O PDV foi trocado."
     }
   ]
 }
