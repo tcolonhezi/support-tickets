@@ -1,4 +1,5 @@
 import { indexTicketsController } from "../controllers/tickets";
+import { updateStatusController } from "../controllers/tickets/close";
 import { createTicketController } from "../controllers/tickets/create";
 import { updateTicketController } from "../controllers/tickets/update";
 import { Route } from "./routes";
@@ -19,6 +20,11 @@ export function ticketsRoute(): Route[] {
       method: "PUT",
       path: "/tickets/:id",
       controller: updateTicketController,
+    },
+    {
+      method: "PATCH",
+      path: "/tickets/:id/close",
+      controller: updateStatusController,
     },
   ];
 }

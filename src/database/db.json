@@ -5,9 +5,9 @@
       "equipment": "Teclado",
       "description": "Computador não liga",
       "user_name": "Thiago",
-      "status": "open",
+      "status": "closed",
       "created_at": "2026-03-03T11:53:43.667Z",
-      "updated_at": "2026-03-19T11:54:56.492Z"
+      "updated_at": "2026-03-23T08:59:42.792Z"
     },
     {
       "id": "553563e0-8cff-4776-a46b-a4363c591b62",
@@ -23,9 +23,48 @@
       "equipment": "Computador2 ",
       "description": "Computador não liga",
       "user_name": "Thiago",
-      "status": "open",
+      "status": "closed",
       "created_at": "2026-03-17T11:32:31.801Z",
-      "updated_at": "2026-03-17T11:32:31.801Z"
+      "updated_at": "2026-03-23T09:42:04.523Z"
+    },
+    {
+      "id": "21f487f7-133a-4e1e-a27a-575c5624d732",
+      "equipment": "Computador3 ",
+      "description": "Quero ver atualizar.",
+      "user_name": "Thiago",
+      "status": "closed",
+      "created_at": "2026-03-23T09:42:25.139Z",
+      "updated_at": "2026-03-24T09:46:52.708Z"
+    },
+    {
+      "id": "93b1554e-fdce-4a3c-8901-f0557a7716dc",
+      "equipment": "Computador4",
+      "description": "Computador não liga",
+      "user_name": "Thiago",
+      "status": "closed",
+      "created_at": "2026-03-24T09:47:25.280Z",
+      "updated_at": "2026-03-24T10:03:40.259Z",
+      "solution": "Agora vai!!!"
+    },
+    {
+      "id": "fb4aed0c-8a51-43f4-bdc5-df6d6f4db2ef",
+      "equipment": "Computador5",
+      "description": "Computador não liga",
+      "user_name": "Thiago",
+      "status": "closed",
+      "created_at": "2026-03-24T09:50:12.897Z",
+      "updated_at": "2026-03-24T09:51:54.329Z",
+      "solution": "Troca do computador."
+    },
+    {
+      "id": "db3fcd33-48f8-4e41-b52a-8df18385171b",
+      "equipment": "Computador PDV 2",
+      "description": "Computador não liga",
+      "user_name": "Alberto",
+      "status": "closed",
+      "created_at": "2026-03-24T10:06:29.984Z",
+      "updated_at": "2026-03-24T10:07:10.097Z",
+      "solution": "O PDV foi trocado."
     }
   ]
 }

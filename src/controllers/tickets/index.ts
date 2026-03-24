@@ -13,13 +13,20 @@ export function indexTicketsController({
   response,
   database,
 }: ControllerProps) {
-  console.log(request.query);
-  const filters =
-    request.query && Object.keys(request.query).length > 0
-      ? request.query
-      : undefined;
+  let filters: Record<string, any> | undefined = undefined;
+  console.log("Request query:", request.query);
+  console.log("Request params:", request.params);
+
+  const combinedFilters = {
+    ...request.query,
+    ...request.params,
+  };
+
+  if (Object.keys(combinedFilters).length > 0) {
+    filters = combinedFilters;
+  }
 
   const tickets = database.select("tickets", filters);
-  console.log(tickets);
+
   response.writeHead(200).end(JSON.stringify({ tickets }));
 }

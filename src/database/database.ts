@@ -33,10 +33,11 @@ export class Database {
       Object.entries(filter).some(([key, value]) => {
         return key.trim() !== "" && value !== undefined && value !== null;
       });
-    console.log("Applying filter:", filter, "Valid filter:", validFilter);
+    // console.log("Applying filter:", filter, "Valid filter:", validFilter);
     if (validFilter) {
       data = data.filter((item) => {
         return Object.entries(filter).some(([key, value]) => {
+          // console.log("Filtering item:", item, "Key:", key, "Value:", value);
           if (!item[key] || !value) return false;
           const itemValue = String(item[key].toLowerCase());
           const filterValue = String(value.toLowerCase());
@@ -44,7 +45,7 @@ export class Database {
         });
       });
     }
-    console.log(data);
+    // console.log(data);
     return data;
   }
 
@@ -64,13 +65,13 @@ export class Database {
   }
 
   update(table: string, id: string, data: object): any {
-    const tableData = this.#database[table] ?? [];
-    const index = tableData.findIndex((item) => item.id === id);
-    if (index === -1) {
-      return null;
+    const index = this.#database[table].findIndex((item) => item.id === id);
+    if (index > 1) {
+      const currentData = this.#database[table][index];
+      this.#database[table][index] = { ...currentData, ...data };
+      this.#persist();
+      return this.#database[table][index];
     }
-    tableData[index] = { ...tableData[index], ...data };
-    this.#persist();
-    return tableData[index];
+    return null;
   }
 }
